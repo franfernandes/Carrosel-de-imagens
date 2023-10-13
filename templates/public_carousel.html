@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carrossel de Imagens</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1
+        style="
+          display: flex;
+          justify-content: center;
+          font-size: 35px;
+          margin-top: 3rem;
+        "
+      >
+        Carrossel de Imagens
+      </h1>
+      <!-- Carrossel de Imagens -->
+      <div
+        class="container text-center"
+        style="max-width: 500px; margin: 0 auto; margin-top: 3rem"
+      >
+        <div
+          id="imageCarousel"
+          class="carousel"
+          style="width: 30em"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner" style="height: 50em">
+            {% for image in images %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+              <div class="cards-wrapper" style="align-items: center">
+                <div class="card">
+                  <div class="image-wrapper">
+                    <img src="{{ image.image_url }}" style="width: 30em" />
+                  </div>
+                  <div class="card-body">
+                    <h2>{{ image.title }}</h2>
+                    <p>{{ image.description }}</p>
+                    <a
+                      class="carousel-control-prev"
+                      href="#imageCarousel"
+                      role="button"
+                      data-slide="prev"
+                    >
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="sr-only">Anterior</span>
+                    </a>
+                    <a
+                      class="carousel-control-next"
+                      href="#imageCarousel"
+                      role="button"
+                      data-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="sr-only">Próxima</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- Botão de Sair -->
+        <div class="position-absolute" style="top: 0; right: 0; margin: 1rem">
+          <form method="GET" action="/logout">
+            <button type="submit" class="btn btn-primary">Sair</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

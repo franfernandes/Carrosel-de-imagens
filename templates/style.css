@@ -1,0 +1,17 @@
+.cards-wrapper{
+  align-items: center;
+  justify-content: center;
+}
+.cards-wrapper{
+  display: flex;
+}
+.card{
+  margin: 0.5.rem;
+  width: 50%;
+}
+
+.carousel-inner .card img {
+  max-width: 100%;
+  height: auto;
+}
+
